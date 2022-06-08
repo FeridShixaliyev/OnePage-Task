@@ -1,8 +1,135 @@
-﻿@{
+﻿@model ModelsVM
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid p-0">
+    <!-- About-->
+    <section class="resume-section" id="about">
+        <div class="resume-section-content">
+            @foreach (var item in Model.About)
+            {
+                <h1 class="mb-0">
+                    Sixaliyev
+                    <span class="text-primary">@item.Title</span>
+                </h1>
+                <div class="subheading mb-5">
+                    @item.Address · @item.PhoneNumber ·
+                    <a href="mailto:name@email.com">@item.Email</a>
+                </div>
+                <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
+                <div class="social-icons">
+                    @foreach (var icon in item.IconImage)
+                    {
+                        <a class="social-icon" href="#!">@Html.Raw(icon.NetImage)</a>
+                    }
+                </div>
+            }
+
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Experience-->
+    <section class="resume-section" id="experience">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Experience</h2>
+            @foreach (var item in Model.Experiences)
+            {
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">@item.Title</h3>
+                        <div class="subheading mb-3">@item.Subtitle</div>
+                        <p>@item.Text</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">@item.Date.ToString("dd-MMMM-yyyy")</span></div>
+                </div>
+            }
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Education-->
+    <section class="resume-section" id="education">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Education</h2>
+            @foreach (var item in Model.Educations)
+            {
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">@item.Title</h3>
+                        <div class="subheading mb-3">@item.Subtitle</div>
+                        <div>@item.Content</div>
+                        <p>GPA: 3.23</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">@item.Date.ToString("dd-MMMM-yyyy")</span></div>
+                </div>
+            }
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Skills-->
+    <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Skills</h2>
+            @foreach (var item in Model.Skills)
+            {
+                <div class="subheading mb-3">Programming Languages & Tools</div>
+                <ul class="list-inline dev-icons">
+                    @foreach (var icon in item.Icons)
+                    {
+                        <li class="list-inline-item">@Html.Raw(icon.Icon)</li>
+
+                    }
+                    @*<li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-angular"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-react"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-sass"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-less"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-npm"></i></li>*@
+                </ul>
+                <div class="subheading mb-3">Workflow</div>
+                <ul class="fa-ul mb-0">
+                    @foreach (var workflow in Model.Workflows)
+                    {
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            @workflow.Text
+                        </li>
+                    }
+                </ul>
+
+            }
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Interests-->
+    <section class="resume-section" id="interests">
+        @foreach (var item in Model.Interests)
+        {
+            <div class="resume-section-content">
+                <h2 class="mb-5">Interests</h2>
+                <p>@item.Text</p>
+            </div>
+        }
+    </section>
+    <hr class="m-0" />
+    <!-- Awards-->
+    <section class="resume-section" id="awards">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Awards & Certifications</h2>
+            <ul class="fa-ul mb-0">
+                @foreach (var item in Model.Awards)
+                {
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        @item.Award
+                    </li>
+                }
+            </ul>
+        </div>
+    </section>
 </div>

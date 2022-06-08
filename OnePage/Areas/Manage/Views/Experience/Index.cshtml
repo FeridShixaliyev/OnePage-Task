@@ -1,0 +1,41 @@
+﻿@model List<Experience>
+@{
+    ViewData["Title"] = "Experience";
+}
+
+<h3 style="margin:17px">
+    Experience crud
+</h3>
+
+<a class="btn btn-outline-success" style="margin: 7px;" asp-controller="experience" asp-action="create">Create</a>
+
+<table class="table" style="margin-top:17px">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Subtitle</th>
+            <th scope="col">Text</th>
+            <th scope="col">Date</th>
+            <th scope="col">Edit/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Subtitle</td>
+                <td>@item.Text</td>
+                <td>@item.Date.ToString("dd-MMMM-yyyy")</td>
+                <td>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-outline-primary" style="margin-right: 5px;" asp-action="edit" asp-route-id="@item.Id">edit</a>
+                        <a class="btn btn-outline-danger"asp-action="delete" asp-route-id="@item.Id">delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

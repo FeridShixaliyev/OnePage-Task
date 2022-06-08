@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using OnePage.DAL;
-using OnePage.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using OnePage.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,9 +16,21 @@ namespace OnePage.Controllers
             _sql = sql;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ModelsVM modelsVM = new ModelsVM
+            {
+                About = await _sql.Abouts.ToListAsync(),
+                Awards = await _sql.Awards.ToListAsync(),
+                Educations = await _sql.Educations.ToListAsync(),
+                Experiences=await _sql.Experiences.ToListAsync(),
+                Interests=await _sql.Interests.ToListAsync(),
+                Skills=await _sql.Skills.ToListAsync(),
+                SkillsIcons=await _sql.SkillsIcons.ToListAsync(),
+                SosialNets=await _sql.SosialNets.ToListAsync(),
+                Workflows=await _sql.Workflows.ToListAsync(),
+            };
+            return View(modelsVM);
         }
     }
 }

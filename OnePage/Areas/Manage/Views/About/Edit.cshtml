@@ -1,0 +1,38 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <h3>Edit Slider</h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="@Model.Title" class="form-label">Title</label>
+            <input asp-for="@Model.Title" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Text" class="form-label"></label>
+            <input asp-for="@Model.Text" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Text"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Address" class="form-label"></label>
+            <input asp-for="@Model.Address" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Address"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.PhoneNumber" class="form-label">Phone Number</label>
+            <input asp-for="@Model.PhoneNumber" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Email" class="form-label"></label>
+            <input asp-for="@Model.Email" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Email"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <a asp-controller="About" asp-action="Edit"></a>
+    </form>
+</div>
+

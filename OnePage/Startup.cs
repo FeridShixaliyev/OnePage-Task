@@ -43,6 +43,12 @@ namespace OnePage
                 opt.Password.RequireDigit = true;
                 opt.Password.RequireUppercase = true;
                 opt.Password.RequireLowercase = true;
+
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.DefaultLockoutTimeSpan =new TimeSpan(0,10,0);
+
+                opt.User.RequireUniqueEmail = true;
             });
         }
 

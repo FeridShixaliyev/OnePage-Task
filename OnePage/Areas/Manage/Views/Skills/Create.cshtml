@@ -1,0 +1,27 @@
+﻿@model Skills
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <h3>Create Skills</h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="@Model.Title" class="form-label">Title</label>
+            <input asp-for="@Model.Title" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Icons" class="form-label"></label>
+            <input asp-for="@Model.Icons" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Icons"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Workflows" class="form-label"></label>
+            <input asp-for="@Model.Workflows" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Workflows"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="skills" asp-action="index"></a>
+    </form>
+</div>
